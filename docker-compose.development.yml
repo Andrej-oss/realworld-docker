@@ -1,10 +1,10 @@
 version: '3'
 services:
   frontend:
-    command: npm start
     build:
       context: ./frontend
       dockerfile: Dockerfile.dev
+    command: npm start
     stdin_open: true
     tty: true
     volumes:
@@ -12,12 +12,12 @@ services:
   api:
     command: npm run dev
     volumes:
-    - "./api/src:/usr/src/app/src"
+    - ./api/src:/usr/src/app/src
 
   auth:
     command: npm run dev
     volumes:
-      - "./auth/src:/usr/src/app/src"
+      - ./auth/src:/usr/src/app/src
   nginx:
     volumes:
     - ./nginx/nginx.conf.dev:/etc/nginx/conf.d/nginx.conf
